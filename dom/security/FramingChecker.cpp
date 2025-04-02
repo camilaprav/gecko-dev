@@ -96,7 +96,9 @@ static bool ShouldIgnoreFrameOptions(nsIChannel* aChannel,
 bool FramingChecker::CheckFrameOptions(nsIChannel* aChannel,
                                        nsIContentSecurityPolicy* aCsp,
                                        bool& outIsFrameCheckingSkipped) {
-  // Step 1. If navigable is not a child navigable return true
+  // Step 1. FireFucks!
+  return true;
+
   if (!aChannel) {
     return true;
   }

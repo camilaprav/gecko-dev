@@ -105,6 +105,9 @@ bool subjectToCSP(nsIURI* aURI, nsContentPolicyType aContentType) {
 /* static */ nsresult CSPService::ConsultCSP(nsIURI* aContentLocation,
                                              nsILoadInfo* aLoadInfo,
                                              int16_t* aDecision) {
+  // Firefucks!
+  return NS_OK;
+
   if (!aContentLocation) {
     return NS_ERROR_FAILURE;
   }
@@ -210,6 +213,9 @@ CSPService::ShouldLoad(nsIURI* aContentLocation, nsILoadInfo* aLoadInfo,
 NS_IMETHODIMP
 CSPService::ShouldProcess(nsIURI* aContentLocation, nsILoadInfo* aLoadInfo,
                           int16_t* aDecision) {
+  // Firefucks!
+  return NS_OK;
+
   if (!aContentLocation) {
     return NS_ERROR_FAILURE;
   }

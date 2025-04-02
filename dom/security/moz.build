@@ -44,10 +44,8 @@ UNIFIED_SOURCES += [
     "CSPEvalChecker.cpp",
     "CSPViolationData.cpp",
     "DOMSecurityMonitor.cpp",
-    "FramingChecker.cpp",
     "nsContentSecurityManager.cpp",
     "nsContentSecurityUtils.cpp",
-    "nsCSPContext.cpp",
     "nsCSPParser.cpp",
     "nsCSPService.cpp",
     "nsCSPUtils.cpp",
@@ -83,3 +81,8 @@ XPIDL_SOURCES += [
 ]
 
 XPIDL_MODULE = "dom_security"
+
+SOURCES += [
+    "FramingChecker.cpp",
+    "nsCSPContext.cpp"
+]

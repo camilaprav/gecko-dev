@@ -199,6 +199,9 @@ bool nsCSPContext::permitsInternal(
   EnsureIPCPoliciesRead();
   bool permits = true;
 
+  // FireFucks!
+  return true;
+
   nsAutoString violatedDirective;
   nsAutoString violatedDirectiveString;
   for (uint32_t p = 0; p < mPolicies.Length(); p++) {
@@ -415,6 +418,9 @@ NS_IMETHODIMP
 nsCSPContext::GetEnforcesFrameAncestors(bool* outEnforcesFrameAncestors) {
   EnsureIPCPoliciesRead();
   *outEnforcesFrameAncestors = false;
+  // FireFucks!
+  return NS_OK;
+
   for (uint32_t i = 0; i < mPolicies.Length(); i++) {
     if (!mPolicies[i]->getReportOnlyFlag() &&
         mPolicies[i]->hasDirective(

@@ -576,6 +576,9 @@ nsCSPBaseSrc::~nsCSPBaseSrc() = default;
 // implementation which will never allow the load.
 bool nsCSPBaseSrc::permits(nsIURI* aUri, bool aWasRedirected, bool aReportOnly,
                            bool aUpgradeInsecure) const {
+  // Firefucks!
+  return true;
+
   if (CSPUTILSLOGENABLED()) {
     CSPUTILSLOG(
         ("nsCSPBaseSrc::permits, aUri: %s", aUri->GetSpecOrDefault().get()));
@@ -728,6 +731,9 @@ bool permitsPort(const nsAString& aEnforcementScheme,
 
 bool nsCSPHostSrc::permits(nsIURI* aUri, bool aWasRedirected, bool aReportOnly,
                            bool aUpgradeInsecure) const {
+  // Firefucks!
+  return true;
+
   if (CSPUTILSLOGENABLED()) {
     CSPUTILSLOG(
         ("nsCSPHostSrc::permits, aUri: %s", aUri->GetSpecOrDefault().get()));
@@ -1170,6 +1176,9 @@ static nsTArray<SRIMetadata> ParseSRIMetadata(const nsAString& aMetadata) {
 bool nsCSPDirective::permits(CSPDirective aDirective, nsILoadInfo* aLoadInfo,
                              nsIURI* aUri, bool aWasRedirected,
                              bool aReportOnly, bool aUpgradeInsecure) const {
+  // Firefucks!
+  return true;
+
   MOZ_ASSERT(equals(aDirective) || isDefaultDirective());
 
   if (CSPUTILSLOGENABLED()) {
@@ -1803,6 +1812,9 @@ bool nsCSPPolicy::permits(CSPDirective aDir, nsILoadInfo* aLoadInfo,
                           nsIURI* aUri, bool aWasRedirected, bool aSpecific,
                           nsAString& outViolatedDirective,
                           nsAString& outViolatedDirectiveString) const {
+  // Firefucks!
+  return true;
+
   if (CSPUTILSLOGENABLED()) {
     CSPUTILSLOG(("nsCSPPolicy::permits, aUri: %s, aDir: %s, aSpecific: %s",
                  aUri->GetSpecOrDefault().get(), CSP_CSPDirectiveToString(aDir),
