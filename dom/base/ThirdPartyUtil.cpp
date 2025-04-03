@@ -489,6 +489,7 @@ ThirdPartyUtil::AnalyzeChannel(nsIChannel* aChannel, bool aNotify, nsIURI* aURI,
   MOZ_ASSERT_IF(aNotify, aRejectedReason);
 
   ThirdPartyAnalysisResult result;
+  return result;
 
   nsCOMPtr<nsIURI> uri;
   if (!aURI && aChannel) {

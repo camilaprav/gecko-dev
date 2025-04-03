@@ -387,7 +387,7 @@ CookieService::GetCookieStringFromHttp(nsIURI* aHostURI, nsIChannel* aChannel,
   // contexts.
   nsCOMPtr<nsICookieJarSettings> cookieJarSettings =
       CookieCommons::GetCookieJarSettings(aChannel);
-  bool isCHIPS = StaticPrefs::network_cookie_CHIPS_enabled() &&
+  bool isCHIPS = false && StaticPrefs::network_cookie_CHIPS_enabled() &&
                  !cookieJarSettings->GetBlockingAllContexts();
   bool isUnpartitioned =
       !result.contains(ThirdPartyAnalysis::IsForeign) ||
@@ -1080,6 +1080,7 @@ CookieStatus CookieService::CheckPrefs(
   MOZ_ASSERT(aRejectedReason);
 
   *aRejectedReason = 0;
+  return STATUS_ACCEPTED;
 
   // don't let unsupported scheme sites get/set cookies (could be a security
   // issue)

@@ -492,7 +492,6 @@ UNIFIED_SOURCES += [
     "TextDirectiveFinder.cpp",
     "TextDirectiveUtil.cpp",
     "TextInputProcessor.cpp",
-    "ThirdPartyUtil.cpp",
     "Timeout.cpp",
     "TimeoutBudgetManager.cpp",
     "TimeoutExecutor.cpp",
@@ -507,6 +506,10 @@ UNIFIED_SOURCES += [
     "WindowFeatures.cpp",
     "WindowNamedPropertiesHandler.cpp",
     "XPathGenerator.cpp",
+]
+
+SOURCES += [
+    "ThirdPartyUtil.cpp",
 ]
 
 if CONFIG["MOZ_WEBRTC"]:

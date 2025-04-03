@@ -45,11 +45,13 @@ UNIFIED_SOURCES += [
     "CookieParser.cpp",
     "CookiePersistentStorage.cpp",
     "CookiePrivateStorage.cpp",
-    "CookieService.cpp",
     "CookieServiceChild.cpp",
-    "CookieServiceParent.cpp",
     "CookieStorage.cpp",
     "ThirdPartyCookieBlockingExceptions.cpp",
+]
+SOURCES += [
+    "CookieService.cpp",
+    "CookieServiceParent.cpp",
 ]
 XPCSHELL_TESTS_MANIFESTS += [
     "test/unit/xpcshell.toml",

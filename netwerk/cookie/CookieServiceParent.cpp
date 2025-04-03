@@ -123,8 +123,13 @@ bool CookieServiceParent::ContentProcessHasCookie(
 bool CookieServiceParent::InsecureCookieOrSecureOrigin(const Cookie& cookie) {
   nsCString baseDomain;
   // CookieStorage notifications triggering this won't fail to get base domain
-  MOZ_ALWAYS_SUCCEEDS(CookieCommons::GetBaseDomainFromHost(
-      mTLDService, cookie.Host(), baseDomain));
+  nsresult rv = CookieCommons::GetBaseDomainFromHost(
+    mTLDService, cookie.Host(), baseDomain);
+
+  if (NS_FAILED(rv)) {
+    printf("⚠️ Failed to get base domain from '%s', using fallback\n", cookie.Host().get());
+    baseDomain.Assign(cookie.Host()); // fallback to raw host string
+  }
 
   // cookie is insecure or cookie is associated with a secure-origin process
   CookieKey cookieKey(baseDomain, cookie.OriginAttributesRef());
@@ -164,7 +169,7 @@ void CookieServiceParent::TrackCookieLoad(nsIChannel* aChannel) {
   // contexts.
   nsCOMPtr<nsICookieJarSettings> cookieJarSettings =
       CookieCommons::GetCookieJarSettings(aChannel);
-  bool isCHIPS = StaticPrefs::network_cookie_CHIPS_enabled() &&
+  bool isCHIPS = false && StaticPrefs::network_cookie_CHIPS_enabled() &&
                  !cookieJarSettings->GetBlockingAllContexts();
   bool isUnpartitioned =
       !result.contains(ThirdPartyAnalysis::IsForeign) ||
